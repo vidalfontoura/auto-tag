@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import AutotagReaderWorker from './autotag_reader_worker';
 const AUTOTAG_TAG_NAME = 'AutoTag_Creator';
 const ROLE_PREFIX = 'arn:aws:iam::';
 const ROLE_SUFFIX = ':role';
@@ -91,6 +92,10 @@ class AutotagDefaultWorker {
       Key: this.getTagName(),
       Value: this.getTagValue()
     };
+  }
+
+  getAutotagList() {
+    return AutotagReaderWorker.getJsonItens();
   }
 
   getTagName() {

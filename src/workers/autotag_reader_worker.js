@@ -27,25 +27,42 @@ AWSData.fromJson = function (json){
 // Define JSON File
 var data_file = '../support/consumer_aws.json';
 
-const readFile = new Promise(function (resolve, reject) {
-	fs.readFile(data_file, function(err, data) {
-	    if (err)
-	        reject(err);
-	    else
-	        resolve(data);
-	    })
-})
+class AutotagReaderWorker(){
+	//constructor(dir) {
+    //this.dir = dir;
+  //}
 
-readFile.then((result) => {
-	console.log('reading the file')
-    var jsonObject = JSON.parse(result); 
+  /* getJsonItens
+  ** method: getJsonItens
+  **
+  ** Get itens from a json file
+  */
+  getJsonItens() {
+    //let _this = this;
+    return new Promise(function (resolve, reject) {
+		fs.readFile(data_file, function(err, data) {
+			    if (err)
+			        reject(err);
+			    else{
+			    	try {
+				        console.log('reading the file')
+					    var jsonObject = JSON.parse(result); 
 
-    for(var i = 0; i < jsonObject.length; i++) {
-  		var item = AWSData.fromJson(jsonObject[i]);
-  		//Print the new AWSData
-  		console.log(item);
-     }
-})
-.catch(err => {
-  console.error("Error in to read the file. See the details:\n " + err);
-});
+						var result = [];
+					    for(var i = 0; i < jsonObject.length; i++) {
+					  		var item = AWSData.fromJson(jsonObject[i]);
+					  		//Print the new AWSData
+					  		console.log(item);
+					  		result[item.appName] = item;
+					    }
+					    return result;
+					} catch (err) {
+			        	reject(err);
+			      	}
+			      }
+			    })
+		});
+	}
+};
+
+export default AutotagReaderWorker;

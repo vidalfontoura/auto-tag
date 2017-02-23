@@ -2,15 +2,15 @@
 	{
 		"appName": "1pSearch",
 		"Role": "service",
-		"financial-identifier": "123456",
-		"owner-email": "sam.sgro@thomsonreuters.com",
-		"application-asset-insight-id": "998877"
+		"financial_identifier": "123456",
+		"owner_email": "sam.sgro@thomsonreuters.com",
+		"application_asset_insight_id": "998877"
 	},
 	{
 		"appName": "1pAuth",
 		"Role": "service",
-		"financial-identifier": "123456",
-		"owner-email": "sam.sgro@thomsonreuters.com",
-		"application-asset-insight-id": "998877"
+		"financial_identifier": "123456",
+		"owner_email": "sam.sgro@thomsonreuters.com",
+		"application_asset_insight_id": "998877"
 	}
 ]
